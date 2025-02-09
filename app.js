@@ -19,6 +19,10 @@ const server = http.createServer(app);
 
 const io = socketIo(server, { cors: { origin: "*" } });
 
+app.get("/", (req, res) => {
+  res.send("Hello Mr.");
+});
+
 app.post("/create-session", async (req, res) => {
   try {
     const sessionId = Math.random().toString(36).substr(2, 9);
@@ -31,6 +35,8 @@ app.post("/create-session", async (req, res) => {
 });
 
 app.get("/is-alive", async (req, res) => {
+  console.log("hi");
+
   try {
     const { sessionId } = req.query;
     const session = await Session.findOne({ sessionId });
@@ -56,7 +62,7 @@ app.use(errorHandlerMiddleware);
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-    server.listen(process.env.PORT || 3000, "192.168.0.102", () =>
+    server.listen(process.env.PORT || 3000, "192.168.0.103", () =>
       console.log(
         `HTTP server is running on port http://localhost:${
           process.env.PORT || 3000
