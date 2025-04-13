@@ -151,10 +151,9 @@ const webRTCSignalingSocket = (io) => {
           await session.save();
           console.log(
             `User ${userId} has turned their video ${
-              participant.videoOn ? "off" : "on"
+              participant.videoOn ? "on" : "off"
             }`
           );
-
           io.to(sessionId).emit("participant-update", participant);
         }
       }

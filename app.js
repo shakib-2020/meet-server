@@ -64,7 +64,7 @@ app.use(errorHandlerMiddleware);
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-    server.listen(process.env.PORT || 3000, "192.168.0.105", () =>
+    server.listen(process.env.PORT || 3000, "192.168.0.104", () =>
       console.log(
         `HTTP server is running on port http://localhost:${
           process.env.PORT || 3000
